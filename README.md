@@ -23,65 +23,43 @@ sse-chat/
 
 ## 🚀 How It Works
 
-**Real-time Messenger:**
-- Multi-user chat application using SSE
-- Messages stored in `messages.json` with full history
-- Each tab has unique identity (via sessionStorage)
-- Real-time message broadcasting to all connected clients
+This real-time chat application uses Server-Sent Events (SSE) for instant message delivery between multiple users or browser tabs.
 
-**Pros:**
-- ✅ Real-time updates (< 100ms)
-- ✅ Persistent message history
-- ✅ Multiple users/tabs support
-- ✅ Modern, sleek UI with gradients
-- ✅ Automatic reconnection
-- ✅ Message delivery tracking
+### Architecture
 
-**Best for:** Real-time chat, collaboration tools, live messaging demos
+1. **Client connects** to `sse-server.php` via JavaScript `EventSource` API
+2. **Server streams events** using `text/event-stream` format
+3. **Messages are stored** in `messages.json` for persistence across sessions
+4. **Each tab has unique identity** (via sessionStorage) for multi-user support
+5. **Heartbeat signal** (every 2.5 seconds) keeps connections alive and detects disconnections
+6. **New messages broadcast** instantly to all connected clients
 
-## 🔧 How SSE Works
-
-1. **Client connects** to `sse-server.php` via `EventSource`
-2. **Server sends events** using `text/event-stream` format
-3. **Browser receives** real-time updates without polling
-4. **Heartbeat** keeps connection alive (every 2.5 seconds)
-5. **Messages broadcast** to all connected clients instantly
-
-### SSE Event Types
+### Event Types
 
 - `connected` - Initial connection established
 - `message` - New message received (triggers display)
-- `heartbeat` - Keep-alive signal
+- `heartbeat` - Keep-alive signal (prevents timeouts, confirms server responsiveness)
 
-### Heartbeat Explained
+### Key Features
 
-The heartbeat (every 2.5 seconds) serves multiple purposes:
-- Keeps connection alive through proxies
-- Detects disconnections
-- Prevents network timeouts
-- Confirms server is responsive
-
-
-### Heartbeat Explained
-
-The heartbeat (every 2.5 seconds) serves multiple purposes:
-- Keeps connection alive through proxies
-- Detects disconnections
-- Prevents network timeouts
-- Confirms server is responsive
+- ✅ Real-time updates (< 100ms latency)
+- ✅ Persistent message history
+- ✅ Multiple users/tabs support
+- ✅ Automatic reconnection on disconnect
+- ✅ Modern, responsive UI
 
 ## 🎨 Customization
 
 ### Message History Limit
 
-Edit `public/sse-server.php` to change the maximum number of stored messages:
+Edit `public/sse-server.php`:
 ```php
 $maxMessages = 100; // Change this value
 ```
 
 ### Polling Interval
 
-Edit `public/sse-server.php` to adjust check frequency:
+Edit `public/sse-server.php`:
 ```php
 usleep(500000); // 0.5 seconds (500ms)
 ```
