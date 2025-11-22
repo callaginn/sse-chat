@@ -1,10 +1,22 @@
 # SSE Real-time Messenger
 A real-time chat application using Server-Sent Events (SSE) for instant message delivery.
 
+### Key Features
+
+- ✅ Real-time updates (< 100ms latency)
+- ✅ Persistent message history
+- ✅ Multiple users/tabs support
+- ✅ Automatic reconnection on disconnect
+- ✅ Modern, responsive UI
+
 ## 🎯 Quick Start
 
 1. **Setup**: Follow [SETUP.md](SETUP.md) to configure DDEV
 2. **Access**: http://sse.ddev.site
+
+## 🚀 How It Works
+
+This real-time chat application uses Server-Sent Events (SSE) for instant message delivery between multiple users or browser tabs.
 
 ## 📁 Project Structure
 
@@ -21,10 +33,6 @@ sse-chat/
 └── SETUP.md                # Setup and testing guide
 ```
 
-## 🚀 How It Works
-
-This real-time chat application uses Server-Sent Events (SSE) for instant message delivery between multiple users or browser tabs.
-
 ### Architecture
 
 1. **Client connects** to `sse-server.php` via JavaScript `EventSource` API
@@ -38,15 +46,7 @@ This real-time chat application uses Server-Sent Events (SSE) for instant messag
 
 - `connected` - Initial connection established
 - `message` - New message received (triggers display)
-- `heartbeat` - Keep-alive signal (prevents timeouts, confirms server responsiveness)
-
-### Key Features
-
-- ✅ Real-time updates (< 100ms latency)
-- ✅ Persistent message history
-- ✅ Multiple users/tabs support
-- ✅ Automatic reconnection on disconnect
-- ✅ Modern, responsive UI
+- `heartbeat` - Keep-alive signal (Ah, ha, ha, ha, stayin' alive, stayin' alive)
 
 ## 🎨 Customization
 
