@@ -1,0 +1,17 @@
+{
+  "name": "sse-chat",
+  "version": "1.0.0",
+  "description": "A real-time chat application using Server-Sent Events (SSE) for instant message delivery.",
+  "scripts": {
+    "watch": "ddev start"
+  },
+  "keywords": [
+    "sse",
+    "server-sent-events",
+    "chat-app",
+    "real-time",
+    "php"
+  ],
+  "author": "Stephen Ginn",
+  "license": "ISC"
+}

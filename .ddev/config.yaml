@@ -1,0 +1,14 @@
+name: sse-chat
+type: php
+docroot: public
+php_version: "8.2"
+webserver_type: apache-fpm
+xdebug_enabled: false
+additional_hostnames: []
+hooks:
+  pre-start:
+    - exec-host: brew services stop httpd
+    - exec-host: brew services stop mariadb
+    - exec-host: sudo brew services stop dnsmasq
+  post-start:
+    - exec: bash -c "perl -pi -e 's/pm.max_children = 8/pm.max_children = 50/' /etc/php/*/fpm/pool.d/www.conf && killall -1 php-fpm"
